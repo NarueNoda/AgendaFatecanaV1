@@ -1,0 +1,24 @@
+.btnAddEvento{
+    cursor: pointer;
+    color: rgb(95, 180, 38);
+}
+
+.btnAddEvento:hover{
+    color: rgb(31, 119, 23);
+}
+.card-margin-top{
+    margin-top: 10px;
+}
+
+.btn-datetime:hover{
+    background-color: #cacacaab;
+}
+
+#url, #notas{
+    border:  0 ;
+}
+
+#url{
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-radius: 0;
+}
