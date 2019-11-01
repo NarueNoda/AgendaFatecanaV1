@@ -24,8 +24,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js"></script>
 
-	<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/4.x/dist/jquery.inputmask.bundle.js"></script>
-	
+	<script src="./js/inputmask/jquery.inputmask.min.js"></script>
 
 	<!-- <script src="https://kit.fontawesome.com/4f4b9a7ef1.js" crossorigin="anonymous"></script> -->
 	
@@ -90,7 +89,7 @@
 							<div class='col-md-8'>
 								<div class="form-group">
 									<div class="input-group date" data-target-input="nearest">
-										<input type="text" id="datahoraComeca" class="form-control datetimepicker-input" data-target="#datahoraComeca" placeholder="Data e horário de Início*" required OnKeyUp="mascara_data(this.value, this.id)" />
+										<input type="text" id="datahoraComeca" class="form-control datetimepicker-input" data-target="#datahoraComeca" data-inputmask="'alias': 'datetime'" placeholder="Data e horário de Início*" required OnKeyUp="mascara_data(this.value, this.id)" />
 										<div class="input-group-append" data-target="#datahoraComeca" data-toggle="datetimepicker">
 											<div class="input-group-text btn-datetime"><i class="fas fa-calendar-plus"></i></div>
 										</div>
@@ -100,7 +99,7 @@
 							<div class='col-md-8'>
 								<div class="form-group mb-0">
 									<div class="input-group date" id="datahoraTermina" data-target-input="nearest">
-										<input type="text" class="form-control datetimepicker-input" data-target="#datahoraTermina" placeholder="Data e horário de Término*"  required/>
+										<input type="text" class="form-control datetimepicker-input" data-target="#datahoraTermina" data-inputmask="'alias': 'datetime'" placeholder="Data e horário de Término*"  required/>
 										<div class="input-group-append" data-target="#datahoraTermina" data-toggle="datetimepicker">
 											<div class="input-group-text btn-datetime"><i class="fas fa-calendar-minus"></i></div>
 										</div>
@@ -108,7 +107,7 @@
 								</div>
 							</div>
 							<div class="col-12">
-								<span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM</small></span>
+								<span class="text-secondary"><small>OBS: formato dd/mm/aaaa HH:MM</small></span>
 							</div>
 							<div class='col-md-12 mt-3'>
 								<div class="form-group card">
@@ -223,6 +222,8 @@
 	<script type="text/javascript">
 		$(function () {
 			CreateColorPicker();
+			
+			$(".datetimepicker-input").inputmask({alias: "datetime", inputFormat: "dd/mm/yyyy HH:M", "placeholder":" "});
 
 			$('#datahoraComeca').datetimepicker({
 				locale: "pt-br",
@@ -353,94 +354,16 @@
 
 
 		function mask_datetime(){
-			var datahoraComeca = $(".datahoraComeca").val();
+			$(this).inputmask("datetime",{
+				mask: "1-2-y h:s", 
+				placeholder: "dd-mm-yyyy hh:mm", 
+				leapday: "-02-29", 
+				separator: "-", 
+				alias: "dd-mm-yyyy"
+			});
 		}
 
-		function mascara_data(data, id){ 
-              var mydata = ''; 
-              mydata = mydata + data; 
-              if (mydata.length == 2){ 
-                  mydata = mydata + '/'; 
-				  $("#"+id).val(mydata);
-              } 
-              if (mydata.length == 5){ 
-                  mydata = mydata + '/'; 
-				  $("#"+id).val(mydata);
-
-              } 
-              if (mydata.length == 10){ 
-                  verifica_data(); 
-              } 
-          } 
-           
-          function verifica_data () { 
-			console.log(document.forms[0].data.value.substring(0,2));
-            dia = (document.forms[0].data.value.substring(0,2)); 
-            mes = (document.forms[0].data.value.substring(3,5)); 
-            ano = (document.forms[0].data.value.substring(6,10)); 
- 
-            situacao = ""; 
-            // verifica o dia valido para cada mes 
-            if ((dia < 01)||(dia < 01 || dia > 30) && (  mes == 04 || mes == 06 || mes == 09 || mes == 11 ) || dia > 31) { 
-                situacao = "falsa"; 
-            } 
- 
-            // verifica se o mes e valido 
-            if (mes < 01 || mes > 12 ) { 
-                situacao = "falsa"; 
-            } 
- 
-            // verifica se e ano bissexto 
-            if (mes == 2 && ( dia < 01 || dia > 29 || ( dia > 28 && (parseInt(ano / 4) != ano / 4)))) { 
-                situacao = "falsa"; 
-            } 
-    
-            if (document.forms[0].data.value == "") { 
-                situacao = "falsa"; 
-            } 
-    
-            if (situacao == "falsa") { 
-                alert("Data inválida!"); 
-                document.forms[0].data.focus(); 
-            } 
-          } 
- 
-          function mascara_hora(hora){ 
-              var myhora = ''; 
-              myhora = myhora + hora; 
-              if (myhora.length == 2){ 
-                  myhora = myhora + ':'; 
-                  document.forms[0].hora.value = myhora; 
-              } 
-              if (myhora.length == 5){ 
-                  verifica_hora(); 
-              } 
-          } 
-           
-          function verifica_hora(){ 
-              hrs = (document.forms[0].hora.value.substring(0,2)); 
-              min = (document.forms[0].hora.value.substring(3,5)); 
-               
-              alert('hrs '+ hrs); 
-              alert('min '+ min); 
-               
-              situacao = ""; 
-              // verifica data e hora 
-              if ((hrs < 00 ) || (hrs > 23) || ( min < 00) ||( min > 59)){ 
-                  situacao = "falsa"; 
-              } 
-               
-              if (document.forms[0].hora.value == "") { 
-                  situacao = "falsa"; 
-              } 
- 
-              if (situacao == "falsa") { 
-                  alert("Hora inválida!"); 
-                  document.forms[0].hora.focus(); 
-              } 
-          } 
-
-	
+		
 
 	</script>
 </body>
