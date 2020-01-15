@@ -43,9 +43,24 @@ $(function () {
     $('.formEdit').slideToggle();
   });
 
-  $(".btn-canc-edit").click(function(){
+  $(".btnEditarEvento").click(function(){
     $('.formEdit').slideToggle();
     $('.visEvent').slideToggle();
+  });
+
+  $(".btn-materias-faltas").click(function(){
+    $('.visFalta').slideToggle();
+    $('.visMaterias').slideToggle();
+  });
+
+  $(".btn-materias-notas").click(function(){
+    $('.visNota').slideToggle();
+    $('.visMaterias').slideToggle();
+  });
+
+  $(".btnAddEvento").click(function(){
+    $('#ModalVisEvent').slideToggle();
+    $('#ModalVisEventAdd').slideToggle();
   });
 
 });
