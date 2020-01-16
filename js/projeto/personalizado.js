@@ -58,9 +58,9 @@ $(function () {
     $('.visMaterias').slideToggle();
   });
 
-  $(".btnAddEvento").click(function(){
-    $('#ModalVisEvent').slideToggle();
-    $('#ModalVisEventAdd').slideToggle();
+  $(".btnToggleAddEvento").click(function(){
+    $('.visEvent').slideToggle();
+    $('.ModalVisEventAdd').slideToggle();
   });
 
 });

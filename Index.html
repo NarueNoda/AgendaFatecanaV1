@@ -58,6 +58,16 @@
         materias: {
             text: 'Materias',
             click: function() {
+              if($(".visMaterias").css("display") == "none"){
+                $(".visMaterias").slideToggle();
+                if($(".visFalta").css("display") == "block"){
+                  $(".visFalta").slideToggle();
+                }
+                if($(".visNota").css("display") == "block"){
+                  $(".visNota").slideToggle();
+                }
+              }
+
                $("#ModalMaterias").modal('show');
             }
         },
@@ -154,7 +164,16 @@
       },
       selectable: true,
       select: function (info){
-          $('#ModalVisualizar').modal('show');
+        if($(".visEvent").css("display") == "none"){
+          $(".visEvent").slideToggle();
+          if($(".formEdit").css("display") == "block"){
+            $(".formEdit").slideToggle();
+          }
+          if($(".ModalVisEventAdd").css("display") == "block"){
+            $(".ModalVisEventAdd").slideToggle();
+          }
+        }
+        $('#ModalVisualizar').modal('show');
       }
 
     });
@@ -214,7 +233,7 @@
                 <tbody>
                   <tr>
                     <td>APL - Algoritmo </td>
-                    <td><button type="button" class="btn btn-warning btn-materias-faltas" name="btnVisFaltas" id="btnVisFaltas" value="visFaltas">Faltas</button></td>
+                    <td><button type="button" class="btn btn-warning btn-materias-faltas text-white" name="btnVisFaltas" id="btnVisFaltas" value="visFaltas">Faltas</button></td>
                     <td><button type="button" class="btn btn-success btn-materias-notas" name="visNotas" id="visNotas" value="visNotas">Notas</button></td>
                   </tr>
                 </tbody>
@@ -572,7 +591,7 @@
                         </div>
                       </div>
                       <div class="col-12">
-                        <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM</small></span>
+                        <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM:SS</small></span>
                       </div>
                       <div class='col-md-10 mt-3'>
                         <div class="form-group card">
@@ -590,105 +609,109 @@
     </div>
   </div>
 
-<div class="container">
-  <div class="modal fade" id="ModalVisualizar">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div id="ModalVisEvent">
-         <!-- Modal Header -->
-         <div class="modal-header">
-            <h4 class="modal-title">Data que foi clicado (2 de novembro de 2019)</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-        <div class="modal-body container ">
+  <div class="container">
+    <div class="modal fade" id="ModalVisualizar">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
           <div class="visEvent">
-          <div class="col-12">
-            <i class="far fa-plus-square fa-2x btnAddEvento float-right"></i>
-          </div>
-            <div class="card col-12 card-margin-top p-0 p-sm-3">
-              <div class="card-body">
-                <h4 class="card-title">Matéria - Professor</h4>
-                <div class="row">
-                  <div class="col-6">
-                    <span>Horário</span>
-                  </div>
-                  <div class="col-6">
-                    <span>Aulas</span>
-                  </div>
-                  <div class="col-6">
-                    <span>Sala</span>
-                  </div>
-                  <div class="col-6">
-                    <span>Faltas</span>
+          <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Data que foi clicado (2 de novembro de 2019)</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body container ">
+              <div class="col-12">
+                <i class="far fa-plus-square fa-2x btnToggleAddEvento float-right"></i>
+              </div>
+              <div class="card col-12 card-margin-top p-0 p-sm-3">
+                <div class="card-body">
+                  <h4 class="card-title">Matéria - Professor</h4>
+                  <div class="row">
+                    <div class="col-6">
+                      <span>Horário</span>
+                    </div>
+                    <div class="col-6">
+                      <span>Aulas</span>
+                    </div>
+                    <div class="col-6">
+                      <span>Sala</span>
+                    </div>
+                    <div class="col-6">
+                      <span>Faltas</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-        
-            <div class="card col-12 card-margin-top bg-light p-0 p-sm-3">
-              <div class="card-body">
-                <h4 class="card-title">LGP - Edgard</h4>
-                <div class="row">
-                  <div class="col-6">
-                    <span>19:00 - 21:30</span>
+          
+              <div class="card col-12 card-margin-top bg-light p-0 p-sm-3">
+                <div class="card-body">
+                  <h4 class="card-title">LGP - Edgard</h4>
+                  <div class="row">
+                    <div class="col-6">
+                      <span>19:00 - 21:30</span>
+                    </div>
+                    <div class="col-6">
+                      <span>Aulas: 4/20</span>
+                    </div>
+                    <div class="col-6">
+                      <span>51A</span>
+                    </div>
+                    <div class="col-6">
+                      <span>Faltas: 2</span>
+                    </div>
                   </div>
-                  <div class="col-6">
-                    <span>Aulas: 4/20</span>
-                  </div>
-                  <div class="col-6">
-                    <span>51A</span>
-                  </div>
-                  <div class="col-6">
-                    <span>Faltas: 2</span>
-                  </div>
-                </div>
-        
-                <div class="card col-12 card-margin-top bg-info text-white p-0 p-sm-3">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-8 col-sm-10">
-                        <h5 class="card-title">Prova P1</h5>
-                      </div>
-                      <div class="col-4 col-sm-2">
-                        <div class="float-right">
-                          <i class="far fa-edit fa-1x btnEditarEvento"></i>
-                          <i class="far fa-trash-alt btnRemoveEvento"></i>
+          
+                  <div class="card col-12 card-margin-top bg-info text-white p-0 p-sm-3">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-8 col-sm-10">
+                          <h5 class="card-title">Prova P1</h5>
+                        </div>
+                        <div class="col-4 col-sm-2">
+                          <div class="float-right">
+                            <i class="far fa-edit fa-1x btnEditarEvento"></i>
+                            <i class="far fa-trash-alt btnRemoveEvento"></i>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <p class="card-text"> Materias bla bla bal, com consulta</p>
                         </div>
                       </div>
-                      <div class="col-12">
-                        <p class="card-text"> Materias bla bla bal, com consulta</p>
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-        
-            <div class="card col-12 card-margin-top badge-dark text-white p-0 p-sm-3">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-9 col-sm-10">
-                    <h5 class="card-title">Evento de sei la oq</h5>
-                  </div>
-                  <div class="col-3 col-sm-2">
-                    <div class="float-right">
-                      <i class="far fa-edit fa-1x btnEditarEvento"></i>
-                      <i class="far fa-trash-alt btnRemoveEvento"></i>
+          
+              <div class="card col-12 card-margin-top badge-dark text-white p-0 p-sm-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-9 col-sm-10">
+                      <h5 class="card-title">Evento de sei la oq</h5>
                     </div>
-                  </div>
-                  <div class="col-12">
-                    <sapn class="card-text">21:00 - 23:00</span>
-                    <p class="card-text"> Materias bla bla bal, com consulta</p>
+                    <div class="col-3 col-sm-2">
+                      <div class="float-right">
+                        <i class="far fa-edit fa-1x btnEditarEvento"></i>
+                        <i class="far fa-trash-alt btnRemoveEvento"></i>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <sapn class="card-text">21:00 - 23:00</span>
+                      <p class="card-text"> Materias bla bla bal, com consulta</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
           <div class="formEdit">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Data que foi clicado (2 de novembro de 2019)</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
             <span id="msg-edit"></span>
-            
+            <div class="modal-body container-fluid ">
               <form method="POST" class="" id="editEvent">
                 <input type="hidden" name="id" id="id">
                 <div class="input-group mb-3 col-12 col-sm-10">
@@ -750,7 +773,7 @@
                   </div>
                 </div>
                 <div class="col-12">
-                  <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM</small></span>
+                  <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM:SS</small></span>
                 </div>
                 <div class='col-md-10 mt-3'>
                   <div class="form-group card">
@@ -758,103 +781,102 @@
                     <textarea type="text" class="form-control" id="notas" placeholder="Notas"></textarea>
                   </div>
                 </div>
+                <button type="button" class="btn btn-secondary btnToggleAddEvento" >Cancelar</button>
                 <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent">Cadastrar</button>
-                <button type="button" class="btn btn-primary btnCancelarEvento btnEditarEvento">Cancelar</button>
               </form>
             </div>
           </div>
-          
-          <div class="modal-content" id="ModalVisEventAdd">
+            
+          <div class="modal-content ModalVisEventAdd">
 
-              <!-- Modal Header -->
-              <div class="modal-header">
-                  <h4 class="modal-title">Adicionar novo evento</h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Adicionar novo evento</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
-              <!-- Modal body -->
-              <div class="modal-body container-fluid ">
-                <span id="msg-cad"></span>
-                  <form method="POST" class="" id="addEvent">
-                    <div class="input-group mb-3 col-12 col-sm-10">
+            <!-- Modal body -->
+            <div class="modal-body container-fluid ">
+              <span id="msg-cad"></span>
+                <form method="POST" class="" id="addEvent">
+                  <div class="input-group mb-3 col-12 col-sm-10">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-heading"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Título*" id="titulo" required>
+                  </div>
+                  <div class="input-group mb-3 col-12 col-sm-10">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-align-left"></i></span>
+                    </div>
+                    <textarea type="text" class="form-control" placeholder="Descrição" row="1" id="descricao"></textarea>
+                  </div>
+                  <div class="row col-12">
+                    <div class="input-group mb-3 col-6 col-sm-3">
                       <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-heading"></i></span>
+                        <span class="input-group-text" title="Cor do evento"><i class="fas fa-palette"></i></span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Título*" id="titulo" required>
+                      <div class="color-pickers" title="Cor do evento" id="bgcolor"></div>
+                          
                     </div>
-                    <div class="input-group mb-3 col-12 col-sm-10">
+                    <div class="input-group mb-3 col-6 col-sm-3">
                       <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="fas fa-align-left"></i></span>
+                        <span class="input-group-text" title="Cor do texto"><i class="fas fa-paint-brush"></i></span>
                       </div>
-                      <textarea type="text" class="form-control" placeholder="Descrição" row="1" id="descricao"></textarea>
+                      <div class="color-pickers" title="Cor do texto" id="textcolor"></div> 
+                          
                     </div>
-                    <div class="row col-12">
-                      <div class="input-group mb-3 col-6 col-sm-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" title="Cor do evento"><i class="fas fa-palette"></i></span>
-                        </div>
-                        <div class="color-pickers" title="Cor do evento" id="bgcolor"></div>
-                            
-                      </div>
-                      <div class="input-group mb-3 col-6 col-sm-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text" title="Cor do texto"><i class="fas fa-paint-brush"></i></span>
-                        </div>
-                        <div class="color-pickers" title="Cor do texto" id="textcolor"></div> 
-                            
-                      </div>
+                  </div>
+                  <div class="input-group mb-3 col-12 col-sm-10">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" title="Tipo de evento"><i class="far fa-calendar-check"></i></span>
                     </div>
-                    <div class="input-group mb-3 col-12 col-sm-10">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" title="Tipo de evento"><i class="far fa-calendar-check"></i></span>
-                      </div>
-                      <select class="custom-select col-10 col-sm-7" id="tipo" title="Tipo de evento">
-                        <option selected>Meu calendário</option>
-                        <option>CGP - Edgard</option>
-                        <option>LPO - Erick</option>
-                        <option>MPAT - Elisa</option>
-                      </select>
-                    </div>
-                    <div class='col-md-8'>
-                      <div class="form-group">
-                        <div class="input-group date" data-target-input="nearest">
-                          <input type="text" id="datahoraComeca" class="form-control" data-target="#datahoraComeca" placeholder="Data e horário de Início*" required onkeypress="DataHora(event, this)" />
-                          <div class="input-group-append" >
-                            <div class="input-group-text"><i class="fas fa-calendar-plus"></i></div>
-                          </div>
+                    <select class="custom-select col-10 col-sm-7" id="tipo" title="Tipo de evento">
+                      <option selected>Meu calendário</option>
+                      <option>CGP - Edgard</option>
+                      <option>LPO - Erick</option>
+                      <option>MPAT - Elisa</option>
+                    </select>
+                  </div>
+                  <div class='col-md-8'>
+                    <div class="form-group">
+                      <div class="input-group date" data-target-input="nearest">
+                        <input type="text" id="datahoraComeca" class="form-control" data-target="#datahoraComeca" placeholder="Data e horário de Início*" required onkeypress="DataHora(event, this)" />
+                        <div class="input-group-append" >
+                          <div class="input-group-text"><i class="fas fa-calendar-plus"></i></div>
                         </div>
                       </div>
                     </div>
-                    <div class='col-md-8'>
-                      <div class="form-group mb-0">
-                        <div class="input-group date" data-target-input="nearest">
-                          <input type="text" class="form-control" id="datahoraTermina" data-target="#datahoraTermina" placeholder="Data e horário de Término*" onkeypress="DataHora(event, this)" required/>
-                          <div class="input-group-append" >
-                            <div class="input-group-text"><i class="fas fa-calendar-minus"></i></div>
-                          </div>
+                  </div>
+                  <div class='col-md-8'>
+                    <div class="form-group mb-0">
+                      <div class="input-group date" data-target-input="nearest">
+                        <input type="text" class="form-control" id="datahoraTermina" data-target="#datahoraTermina" placeholder="Data e horário de Término*" onkeypress="DataHora(event, this)" required/>
+                        <div class="input-group-append" >
+                          <div class="input-group-text"><i class="fas fa-calendar-minus"></i></div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-12">
-                      <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM</small></span>
+                  </div>
+                  <div class="col-12">
+                    <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM:SS</small></span>
+                  </div>
+                  <div class='col-md-10 mt-3'>
+                    <div class="form-group card">
+                      <input type="text" class="form-control" id="url" placeholder="Url">
+                      <textarea type="text" class="form-control" id="notas" placeholder="Notas"></textarea>
                     </div>
-                    <div class='col-md-10 mt-3'>
-                      <div class="form-group card">
-                        <input type="text" class="form-control" id="url" placeholder="Url">
-                        <textarea type="text" class="form-control" id="notas" placeholder="Notas"></textarea>
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-secondary btnAddEvento" >Cancelar</button>
-                    <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent">Cadastrar</button>
-                  </form>
-              </div>
+                  </div>
+                  <button type="button" class="btn btn-secondary btnToggleAddEvento" >Cancelar</button>
+                  <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent">Cadastrar</button>
+                </form>
+            </div>
           </div>
 
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
 <!-- Bootstrap 4 js -->
