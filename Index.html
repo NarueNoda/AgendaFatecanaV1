@@ -56,7 +56,7 @@
             }
         },
         materias: {
-            text: 'Materias',
+            text: 'Matérias',
             click: function() {
               if($(".visMaterias").css("display") == "none"){
                 $(".visMaterias").slideToggle();
@@ -252,8 +252,8 @@
               <!-- Modal body -->
               <div class="modal-body container-fluid pb-5">
                 <span id="msg-addfalta"></span>
-                <form method="POST" class="" id="addFalta">
-                  <div class='col-md-8'>
+                <form method="POST" class="" id="addMateriaFalta">
+                  <div class='col-md-10 col-12'>
                     <div class="form-group">
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -268,12 +268,12 @@
                       <span class="input-group-text" title="Horário da aula">Horário</span>
                     </div>
                     <select class="custom-select col-10 col-sm-7" id="faltaHorario" title="Horário de aula">
-                      <option selected>1 horário</option>
+                      <option value="1" selected>1 horário</option>
                       <option>2 horário</option>
                     </select>
                   </div>
                   <div class="float-right">
-                    <button type="button" class="btn btn-success" name="CadFalta" id="CadFalta" value="CadFalta">Cadastrar</button>
+                    <button type="button" class="btn btn-success" name="CadFalta" id="CadFalta" value="CadFalta" onclick="limparForm('addMateriaFalta')">Cadastrar</button>
                   </div>
                 </form>
               </div>
@@ -299,7 +299,7 @@
                 </table>
               </div>
               <div>
-                <button type="button" class="btn btn-secondary btn-materias-faltas">Voltar</button>
+                <button type="button" class="btn btn-secondary btn-materias-faltas" onclick="limparForm('addMateriaFalta')">Voltar</button>
               </div>
             </div>
 
@@ -315,8 +315,8 @@
               <!-- Modal body -->
               <div class="modal-body container-fluid pb-5">
                 <span id="msg-addfalta"></span>
-                <form method="POST" class="" id="addNota">
-                  <div class='col-md-8'>
+                <form method="POST" class="" id="addMateriaNota">
+                  <div class='col-md-10 col-12'>
                     <div class="form-group">
                       <div class="input-group">
                         <div class="input-group-prepend">
@@ -340,14 +340,14 @@
                       <option>Sub 1</option>
                     </select>
                   </div>
-                  <div class="input-group mb-3 col-12 col-sm-10">
+                  <div class="input-group mb-3 col-12 col-sm-6">
                     <div class="input-group-prepend">
                       <span class="input-group-text" title="Nota da matéria">Nota</span>
                     </div>
-                    <input type="number" id="Nota">
+                    <input type="number" class="form-control" id="Nota">
                   </div>
                   <div class="float-right">
-                    <button type="button" class="btn btn-success" name="CadNota" id="CadNota" value="CadNota">Cadastrar</button>
+                    <button type="button" class="btn btn-success" name="CadNota" id="CadNota" value="CadNota" onclick="limparForm('addMateriaNota')">Cadastrar</button>
                   </div>
                 </form>
               </div>
@@ -373,7 +373,7 @@
                   </table>
                 </div>
               <div>
-                <button type="button" class="btn btn-secondary btn-materias-notas">Voltar</button>
+                <button type="button" class="btn btn-secondary btn-materias-notas" onclick="limparForm('addMateriaNota')">Voltar</button>
               </div>
             </div>
 
@@ -402,7 +402,7 @@
           <div class="modal-body container-fluid ">
             <span id="msg-addfalta"></span>
             <form method="POST" class="" id="addFalta">
-              <div class='col-md-8'>
+              <div class='col-md-10 col-12'>
                 <div class="form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -417,7 +417,7 @@
                   <span class="input-group-text" title="Matéria">Matéria</span>
                 </div>
                 <select class="custom-select col-10 col-sm-7" id="addFaltaMateria" title="Matéria">
-                  <option selected>CGP - Also</option>
+                  <option value="1" selected>CGP - Also</option>
                   <option>CGP - Edgard</option>
                   <option>LPO - Erick</option>
                   <option>MPAT - Elisa</option>
@@ -428,13 +428,13 @@
                   <span class="input-group-text" title="Horário da aula">Horário</span>
                 </div>
                 <select class="custom-select col-10 col-sm-7" id="faltaHorario" title="Horário de aula">
-                  <option selected>1 horário</option>
+                  <option value="1" selected>1 horário</option>
                   <option>2 horário</option>
                 </select>
               </div>
               <div class="float-right">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" name="CadFalta" id="CadFalta" value="CadFalta">Cadastrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limparForm('addFalta')">Cancelar</button>
+                <button type="button" class="btn btn-success" name="CadFalta" id="CadFalta" value="CadFalta" onclick="limparForm('addFalta')">Cadastrar</button>
               </div>
             </form>
           </div>
@@ -460,7 +460,7 @@
           <div class="modal-body container-fluid ">
             <span id="msg-addfalta"></span>
             <form method="POST" class="" id="addNota">
-              <div class='col-md-8'>
+              <div class='col-md-10 col-12'>
                 <div class="form-group">
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -475,7 +475,7 @@
                   <span class="input-group-text" title="Matéria">Matéria</span>
                 </div>
                 <select class="custom-select col-10 col-sm-7" id="addNotaMateria" title="Matéria">
-                  <option selected>CGP - Also</option>
+                  <option value="1" selected>CGP - Also</option>
                   <option>CGP - Edgard</option>
                   <option>LPO - Erick</option>
                   <option>MPAT - Elisa</option>
@@ -486,7 +486,7 @@
                   <span class="input-group-text">Tipo de nota:</span>
                 </div>
                 <select class="custom-select col-10 col-sm-7" id="tipo" title="Tipo">
-                  <option selected>Prova 1</option>
+                  <option value="1" selected>Prova 1</option>
                   <option>Prova 2</option>
                   <option>Prova 3</option>
                   <option>Trabalho 1</option>
@@ -495,15 +495,15 @@
                   <option>Sub 1</option>
                 </select>
               </div>
-              <div class="input-group mb-3 col-12 col-sm-10">
+              <div class="input-group mb-3 col-7 col-sm-5 ">
                 <div class="input-group-prepend">
                   <span class="input-group-text" title="Nota da matéria">Nota</span>
                 </div>
-                <input type="number" id="Nota">
+                <input type="number" class="form-control" id="Nota">
               </div>
               <div class="float-right">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" name="CadNota" id="CadNota" value="CadNota">Cadastrar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limparForm('addNota')">Cancelar</button>
+                <button type="button" class="btn btn-success" name="CadNota" id="CadNota" value="CadNota" onclick="limparForm('addNota')">Cadastrar</button>
               </div>
             </form>
           </div>
@@ -515,7 +515,6 @@
 
 
   <div class="container">
-
     <!-- The Modal -->
     <div class="modal fade" id="ModalAdd">
         <div class="modal-dialog modal-lg">
@@ -564,7 +563,7 @@
                           <span class="input-group-text" title="Tipo de evento"><i class="far fa-calendar-check"></i></span>
                         </div>
                         <select class="custom-select col-10 col-sm-7" id="tipo" title="Tipo de evento">
-                          <option selected>Meu calendário</option>
+                          <option value="1" selected>Meu calendário</option>
                           <option>CGP - Edgard</option>
                           <option>LPO - Erick</option>
                           <option>MPAT - Elisa</option>
@@ -593,14 +592,10 @@
                       <div class="col-12">
                         <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM:SS</small></span>
                       </div>
-                      <div class='col-md-10 mt-3'>
-                        <div class="form-group card">
-                          <input type="text" class="form-control" id="url" placeholder="Url">
-                          <textarea type="text" class="form-control" id="notas" placeholder="Notas"></textarea>
-                        </div>
+                      <div class="float-right">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="limparForm('addEvent');">Cancelar</button>
+                        <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent" onclick="limparForm('addEvent')">Cadastrar</button>
                       </div>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                      <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent">Cadastrar</button>
                     </form>
                 </div>
 
@@ -712,7 +707,7 @@
             </div>
             <span id="msg-edit"></span>
             <div class="modal-body container-fluid ">
-              <form method="POST" class="" id="editEvent">
+              <form method="POST" class="" id="editVisEvent">
                 <input type="hidden" name="id" id="id">
                 <div class="input-group mb-3 col-12 col-sm-10">
                   <div class="input-group-prepend">
@@ -746,7 +741,7 @@
                     <span class="input-group-text" title="Tipo de evento"><i class="far fa-calendar-check"></i></span>
                   </div>
                   <select class="custom-select col-10 col-sm-7" id="tipo" title="Tipo de evento">
-                    <option selected>Meu calendário</option>
+                    <option value="1" selected>Meu calendário</option v>
                     <option>CGP - Edgard</option>
                     <option>LPO - Erick</option>
                     <option>MPAT - Elisa</option>
@@ -775,14 +770,10 @@
                 <div class="col-12">
                   <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM:SS</small></span>
                 </div>
-                <div class='col-md-10 mt-3'>
-                  <div class="form-group card">
-                    <input type="text" class="form-control" id="url" placeholder="Url">
-                    <textarea type="text" class="form-control" id="notas" placeholder="Notas"></textarea>
-                  </div>
+                <div class="float-right">
+                  <button type="button" class="btn btn-secondary btnToggleAddEvento" onclick="limparForm('editVisEvent')">Cancelar</button>
+                  <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent" onclick="limparForm('editVisEvent')">Cadastrar</button>
                 </div>
-                <button type="button" class="btn btn-secondary btnToggleAddEvento" >Cancelar</button>
-                <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent">Cadastrar</button>
               </form>
             </div>
           </div>
@@ -798,7 +789,7 @@
             <!-- Modal body -->
             <div class="modal-body container-fluid ">
               <span id="msg-cad"></span>
-                <form method="POST" class="" id="addEvent">
+                <form method="POST" class="" id="addVisEvent">
                   <div class="input-group mb-3 col-12 col-sm-10">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fas fa-heading"></i></span>
@@ -832,7 +823,7 @@
                       <span class="input-group-text" title="Tipo de evento"><i class="far fa-calendar-check"></i></span>
                     </div>
                     <select class="custom-select col-10 col-sm-7" id="tipo" title="Tipo de evento">
-                      <option selected>Meu calendário</option>
+                      <option value="1" selected>Meu calendário</option>
                       <option>CGP - Edgard</option>
                       <option>LPO - Erick</option>
                       <option>MPAT - Elisa</option>
@@ -861,14 +852,10 @@
                   <div class="col-12">
                     <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM:SS</small></span>
                   </div>
-                  <div class='col-md-10 mt-3'>
-                    <div class="form-group card">
-                      <input type="text" class="form-control" id="url" placeholder="Url">
-                      <textarea type="text" class="form-control" id="notas" placeholder="Notas"></textarea>
-                    </div>
+                  <div class="float-right mb-3">
+                    <button type="button" class="btn btn-secondary btnToggleAddEvento" onclick="limparForm('addVisEvent')">Cancelar</button>
+                    <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent" onclick="limparForm('addVisEvent')">Cadastrar</button>
                   </div>
-                  <button type="button" class="btn btn-secondary btnToggleAddEvento" >Cancelar</button>
-                  <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent">Cadastrar</button>
                 </form>
             </div>
           </div>

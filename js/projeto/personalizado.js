@@ -199,3 +199,16 @@ function DataHora(evento, objeto) {
         event.returnValue = false;
     }
 }
+
+function limparForm(idform){
+  var input = $('#' + idform).find(".form-control");
+  var select = $('#' + idform).find(".custom-select");
+
+  for (var i = 0; i < input.length; i++) {
+    input[i].value = "";
+  }
+
+  for (var i = 0; i < select.length; i++) {
+    select[i].value = "1";
+  }
+}
