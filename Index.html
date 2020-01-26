@@ -67,20 +67,22 @@
                   $(".visNota").slideToggle();
                 }
               }
-
+              limparForm("ModalMaterias");
                $("#ModalMaterias").modal('show');
             }
         },
         add_notas: {
             text: '+ Notas',
             click: function() {
+                limparForm("ModalAddNotas");
                $("#ModalAddNotas").modal('show');
             }
         },
         add_faltas: {
             text: '+ Faltas',
             click: function() {
-               $("#ModalAddFaltas").modal('show');
+              limparForm("ModalAddFaltas");
+              $("#ModalAddFaltas").modal('show');
             }
         }
       },     
@@ -173,6 +175,7 @@
             $(".ModalVisEventAdd").slideToggle();
           }
         }
+        limparForm("ModalVisualizar");
         $('#ModalVisualizar').modal('show');
       }
 
@@ -232,7 +235,8 @@
               <table class="table table-borderless">
                 <tbody>
                   <tr>
-                    <td>APL - Algoritmo </td>
+                    <td>APL - Algoritmo</td>
+                    <td><button type="button" class="btn btn-info btn-materias-info" name="btnVisInfo" id="btnVisInfo" value="visInfo">Info</button></td>
                     <td><button type="button" class="btn btn-warning btn-materias-faltas text-white" name="btnVisFaltas" id="btnVisFaltas" value="visFaltas">Faltas</button></td>
                     <td><button type="button" class="btn btn-success btn-materias-notas" name="visNotas" id="visNotas" value="visNotas">Notas</button></td>
                   </tr>
@@ -340,7 +344,7 @@
                       <option>Sub 1</option>
                     </select>
                   </div>
-                  <div class="input-group mb-3 col-12 col-sm-6">
+                  <div class="input-group mb-3 col-12 col-sm-6" id="divVisNota">
                     <div class="input-group-prepend">
                       <span class="input-group-text" title="Nota da matéria">Nota</span>
                     </div>
@@ -379,6 +383,39 @@
 
           </div>
         
+          <div class="visInfo">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Info de [Nome da materia]</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body container-fluid">
+              <div class="row">
+                <div class="col-6">
+                  <span>19:00 - 21:30</span>
+                </div>
+                <div class="col-6">
+                  <span>Aulas: 4/20</span>
+                </div>
+                <div class="col-6">
+                  <span>51A</span>
+                </div>
+                <div class="col-6">
+                  <span>Faltas: 2</span>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            <div class="modal-body">
+              <div>
+                <button type="button" class="btn btn-secondary btn-materias-info" onclick="limparForm('addMateriaNota')">Voltar</button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -699,14 +736,14 @@
             </div>
           </div>
 
-          <div class="formEdit">
+          <div class="modal-content formEdit">
             <!-- Modal Header -->
             <div class="modal-header">
               <h4 class="modal-title">Data que foi clicado (2 de novembro de 2019)</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <span id="msg-edit"></span>
-            <div class="modal-body container-fluid ">
+            <div class="modal-body container-fluid pb-5">
               <form method="POST" class="" id="editVisEvent">
                 <input type="hidden" name="id" id="id">
                 <div class="input-group mb-3 col-12 col-sm-10">
@@ -771,7 +808,7 @@
                   <span class="text-secondary"><small>OBS: formato DD/MM/AAAA HH:MM:SS</small></span>
                 </div>
                 <div class="float-right">
-                  <button type="button" class="btn btn-secondary btnToggleAddEvento" onclick="limparForm('editVisEvent')">Cancelar</button>
+                  <button type="button" class="btn btn-secondary btnEditarEvento" onclick="limparForm('editVisEvent')">Cancelar</button>
                   <button type="button" class="btn btn-success" name="CadEvent" id="CadEvent" value="CadEvent" onclick="limparForm('editVisEvent')">Cadastrar</button>
                 </div>
               </form>

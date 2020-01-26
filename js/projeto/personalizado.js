@@ -44,8 +44,8 @@ $(function () {
   });
 
   $(".btnEditarEvento").click(function(){
-    $('.formEdit').slideToggle();
     $('.visEvent').slideToggle();
+    $('.formEdit').slideToggle();
   });
 
   $(".btn-materias-faltas").click(function(){
@@ -55,6 +55,11 @@ $(function () {
 
   $(".btn-materias-notas").click(function(){
     $('.visNota').slideToggle();
+    $('.visMaterias').slideToggle();
+  });
+
+  $(".btn-materias-info").click(function(){
+    $('.visInfo').slideToggle();
     $('.visMaterias').slideToggle();
   });
 

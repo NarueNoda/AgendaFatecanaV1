@@ -35,6 +35,10 @@
     display: none;
 }
 
+.visInfo{
+    display: none;
+}
+
 .ModalVisEventAdd{
     display: none;
 }
