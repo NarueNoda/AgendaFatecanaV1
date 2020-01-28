@@ -236,16 +236,16 @@
                 <tbody>
                   <tr>
                     <td>APL - Algoritmo</td>
-                    <td><button type="button" class="btn btn-info btn-materias-info" name="btnVisInfo" id="btnVisInfo" value="visInfo">Info</button></td>
-                    <td><button type="button" class="btn btn-warning btn-materias-faltas text-white" name="btnVisFaltas" id="btnVisFaltas" value="visFaltas">Faltas</button></td>
-                    <td><button type="button" class="btn btn-success btn-materias-notas" name="visNotas" id="visNotas" value="visNotas">Notas</button></td>
+                    <td><button type="button" class="btn btn-info btn-materias-info" name="btnMatInfo" id="btnMatInfo" value="matInfo">Info</button></td>
+                    <td><button type="button" class="btn btn-warning btn-materias-faltas text-white" name="btnMatFaltas" id="btnMatFaltas" value="matFaltas">Faltas</button></td>
+                    <td><button type="button" class="btn btn-success btn-materias-notas" name="matNotas" id="matNotas" value="matNotas">Notas</button></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <div class="visFalta">
+          <div class="matFalta">
             <div>
               <!-- Modal Header -->
               <div class="modal-header">
@@ -309,7 +309,7 @@
 
           </div>
 
-          <div class="visNota">
+          <div class="matNota">
             <!-- Modal Header -->
             <div class="modal-header">
               <h4 class="modal-title">Notas de [Nome da materia]</h4>
@@ -383,7 +383,7 @@
 
           </div>
         
-          <div class="visInfo">
+          <div class="matInfo">
             <!-- Modal Header -->
             <div class="modal-header">
               <h4 class="modal-title">Info de [Nome da materia]</h4>
@@ -671,6 +671,12 @@
                     <div class="col-6">
                       <span>Faltas</span>
                     </div>
+                    <div class="col-6">
+                      <button type="button" class="btn btn-warning btn-visualizar-faltas text-white" name="btnVisFaltas" id="btnVisFaltas" value="visFaltas">Faltas</button>
+                    </div>
+                    <div class="col-6">
+                      <button type="button" class="btn btn-success btn-visualizar-notas" name="visNotas" id="visNotas" value="visNotas">Notas</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -690,6 +696,12 @@
                     </div>
                     <div class="col-6">
                       <span>Faltas: 2</span>
+                    </div>
+                    <div class="col-6">
+                      <button type="button" class="btn btn-warning btn-visualizar-faltas text-white" name="btnVisFaltas" id="btnVisFaltas" value="visFaltas">Faltas</button>
+                    </div>
+                    <div class="col-6">
+                      <button type="button" class="btn btn-success btn-visualizar-notas" name="visNotas" id="visNotas" value="visNotas">Notas</button>
                     </div>
                   </div>
           
@@ -895,6 +907,144 @@
                   </div>
                 </form>
             </div>
+          </div>
+
+          <div class="visFalta">
+            <div>
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Faltas de [Nome da materia]</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body container-fluid pb-5">
+                <span id="msg-addfalta"></span>
+                <form method="POST" class="" id="addMateriaFalta">
+                  <div class='col-md-10 col-12'>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Data da falta:</span>
+                        </div>
+                        <input type="date" id="faltaData" class="form-control" name="faltaData" required/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3 col-12 col-sm-10">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" title="Horário da aula">Horário</span>
+                    </div>
+                    <select class="custom-select col-10 col-sm-7" id="faltaHorario" title="Horário de aula">
+                      <option value="1" selected>1 horário</option>
+                      <option>2 horário</option>
+                    </select>
+                  </div>
+                  <div class="float-right">
+                    <button type="button" class="btn btn-success" name="CadFalta" id="CadFalta" value="CadFalta" onclick="limparForm('addMateriaFalta')">Cadastrar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <hr>
+            <div class="modal-body">
+              <div>
+                <table class="table table-borderless">
+                  <thead>
+                    <tr>
+                      <th>Data da falta</th>
+                      <th>Horário</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>24/05/20 </td>
+                      <td>1 horário</td>
+                      <td><button type="button" class="btn btn-danger" id="dataFaltaExluir">Excluir</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <button type="button" class="btn btn-secondary btn-visualizar-faltas" onclick="limparForm('addMateriaFalta')">Voltar</button>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="visNota">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Notas de [Nome da materia]</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+              <!-- Modal body -->
+              <div class="modal-body container-fluid pb-5">
+                <span id="msg-addfalta"></span>
+                <form method="POST" class="" id="addMateriaNota">
+                  <div class='col-md-10 col-12'>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Data da Nota:</span>
+                        </div>
+                        <input type="date" id="notaData" class="form-control" name="notaData"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3 col-12 col-sm-10">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Tipo de nota:</span>
+                    </div>
+                    <select class="custom-select col-10 col-sm-7" id="tipo" title="Tipo">
+                      <option selected>Prova 1</option>
+                      <option>Prova 2</option>
+                      <option>Prova 3</option>
+                      <option>Trabalho 1</option>
+                      <option>Trabalho 2</option>
+                      <option>Trabalho 3</option>
+                      <option>Sub 1</option>
+                    </select>
+                  </div>
+                  <div class="input-group mb-3 col-12 col-sm-6" id="divVisNota">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" title="Nota da matéria">Nota</span>
+                    </div>
+                    <input type="number" class="form-control" id="Nota">
+                  </div>
+                  <div class="float-right">
+                    <button type="button" class="btn btn-success" name="CadNota" id="CadNota" value="CadNota" onclick="limparForm('addMateriaNota')">Cadastrar</button>
+                  </div>
+                </form>
+              </div>
+
+              <hr>
+              <div class="modal-body">
+                <div>
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th>Tipo</th>
+                        <th>Nota</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Prova 1 </td>
+                        <td>6.0 </td>
+                        <td><button type="button" class="btn btn-danger" id="dataFaltaExluir">Excluir</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              <div>
+                <button type="button" class="btn btn-secondary btn-visualizar-notas" onclick="limparForm('addMateriaNota')">Voltar</button>
+              </div>
+            </div>
+
           </div>
 
         </div>

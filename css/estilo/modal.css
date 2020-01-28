@@ -27,15 +27,23 @@
     display: block;
 }
 
+.matFalta{
+    display: none;
+}
+
+.matNota{
+    display: none;
+}
+
+.matInfo{
+    display: none;
+}
+
 .visFalta{
     display: none;
 }
 
 .visNota{
-    display: none;
-}
-
-.visInfo{
     display: none;
 }
 

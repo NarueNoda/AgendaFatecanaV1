@@ -49,23 +49,33 @@ $(function () {
   });
 
   $(".btn-materias-faltas").click(function(){
-    $('.visFalta').slideToggle();
+    $('.matFalta').slideToggle();
     $('.visMaterias').slideToggle();
   });
 
   $(".btn-materias-notas").click(function(){
-    $('.visNota').slideToggle();
+    $('.matNota').slideToggle();
     $('.visMaterias').slideToggle();
   });
 
   $(".btn-materias-info").click(function(){
-    $('.visInfo').slideToggle();
+    $('.matInfo').slideToggle();
     $('.visMaterias').slideToggle();
   });
 
   $(".btnToggleAddEvento").click(function(){
     $('.visEvent').slideToggle();
     $('.ModalVisEventAdd').slideToggle();
+  });
+
+  $(".btn-visualizar-faltas").click(function(){
+    $('.visFalta').slideToggle();
+    $('.visEvent').slideToggle();
+  });
+
+  $(".btn-visualizar-notas").click(function(){
+    $('.visNota').slideToggle();
+    $('.visEvent').slideToggle();
   });
 
 });
